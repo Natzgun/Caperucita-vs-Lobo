@@ -1,9 +1,7 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
-#include <cstdlib>
-#include <ctime>
-#include <iostream>
+#include <unordered_map>
 #include <vector>
 enum TypeTerrain { SAFE_PATH, DANGER_PATH, OBSTRACLE };
 
@@ -14,6 +12,7 @@ private:
   int width;
   int height;
   vector<vector<TypeTerrain>> map;
+  unordered_map<TypeTerrain, int> costTerrain;
 
   void generateMainPath();
   void generateAdditionalPaths();
@@ -29,6 +28,12 @@ public:
   Terrain(int w, int h);
   void generateTerrain();
   void showTerrain();
+
+  int getWidth() const;
+  int gertHeight() const;
+
+  TypeTerrain getTerrainAt(int x, int y) const;
+  int getCost(TypeTerrain tt);
 };
 
 #endif // !TERRAIN_H
