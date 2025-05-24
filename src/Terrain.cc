@@ -1,5 +1,8 @@
 #include "Terrain.h"
 #include <algorithm>
+#include <cstdlib>
+#include <ctime>
+#include <iostream>
 
 Terrain::Terrain() {
   srand(time(nullptr));
@@ -7,6 +10,7 @@ Terrain::Terrain() {
   height = 30;
   map = vector<vector<TypeTerrain>>(height,
                                     vector<TypeTerrain>(width, OBSTRACLE));
+  costTerrain = {{SAFE_PATH, 1}, {DANGER_PATH, 3}, {OBSTRACLE, 100}};
   generateTerrain();
 }
 
@@ -14,6 +18,8 @@ Terrain::Terrain(int w, int h) : width(w), height(h) {
   srand(time(nullptr));
   map = vector<vector<TypeTerrain>>(height,
                                     vector<TypeTerrain>(width, OBSTRACLE));
+
+  costTerrain = {{SAFE_PATH, 1}, {DANGER_PATH, 3}, {OBSTRACLE, 100}};
   generateTerrain();
 }
 
@@ -294,3 +300,16 @@ void Terrain::showTerrain() {
     cout << endl;
   }
 }
+
+int Terrain::getWidth() const { return width; }
+
+int Terrain::gertHeight() const { return height; }
+
+TypeTerrain Terrain::getTerrainAt(int x, int y) const {
+  if (x >= 0 && x < width && y >= 0 && y < height) {
+    return map[y][x];
+  }
+  return OBSTRACLE;
+}
+
+int Terrain::getCost(TypeTerrain tt) { return costTerrain[tt]; }
