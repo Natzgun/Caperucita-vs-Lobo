@@ -4,7 +4,11 @@ Game::Game(Terrain &t, Graph &g, Node start, Node goal, Node loboStart)
     : terrain(t), graph(g),
       window(sf::VideoMode(t.getWidth() * tileSize, t.getHeight() * tileSize),
              "Caperucita vs. Lobo"),
-      caperucita(start), goal(goal), lobo(loboStart) {}
+      caperucita(start), goal(goal), lobo(loboStart),
+      cap("../../../assets/CaperucitaSprite.jpg", start.x * tileSize,
+          start.y * tileSize),
+      wolf("../../../assets/LoboSprite.jpg", loboStart.x * tileSize,
+           loboStart.y * tileSize) {}
 
 void Game::run() {
   while (window.isOpen()) {
@@ -70,7 +74,7 @@ void Game::render() {
       sf::Color color;
       switch (tt) {
       case SAFE_PATH:
-        color = sf::Color::Green;
+        color = sf::Color::White;
         break;
       case DANGER_PATH:
         color = sf::Color(255, 140, 0);
@@ -84,10 +88,14 @@ void Game::render() {
   }
 
   drawTile(goal.x, goal.y, sf::Color::Blue);
-  drawTile(caperucita.x, caperucita.y, sf::Color::Red);
-  drawTile(lobo.x, lobo.y, sf::Color::Magenta);
-  drawTile(lobo.x, lobo.y, sf::Color::Blue);
+  // drawTile(caperucita.x, caperucita.y, sf::Color::Red);
+  // drawTile(lobo.x, lobo.y, sf::Color::Magenta);
 
+  wolf.setPosition(lobo.x * tileSize, lobo.y * tileSize);
+  wolf.draw(window);
+
+  cap.setPosition(caperucita.x * tileSize, caperucita.y * tileSize);
+  cap.draw(window);
   window.display();
 }
 

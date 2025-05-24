@@ -1,11 +1,21 @@
 #ifndef CAPERUCITA_H
 #define CAPERUCITA_H
 
-#include <Character.h>
+#include <SFML/Graphics.hpp>
+#include <string>
 
-class Caperucita : public Character {
+class Caperucita {
 public:
-    Caperucita(const sf::Texture& texture, float step = 1.f);
+    Caperucita(const std::string& texturePath, float x, float y);
+
+    void setPosition(float x, float y);
+    sf::Vector2f getPosition() const;
+
+    void draw(sf::RenderWindow& window) const;
+
+private:
+    sf::Sprite sprite;
+    sf::Texture texture;
 };
 
 #endif // CAPERUCITA_H

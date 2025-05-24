@@ -2,7 +2,9 @@
 #define GAME_H
 
 #include "AStar.h"
+#include "Caperucita.h"
 #include "Graph.h"
+#include "Lobo.h"
 #include "Node.h"
 #include "Terrain.h"
 #include <SFML/Graphics.hpp>
@@ -18,6 +20,9 @@ private:
   Node caperucita;
   Node lobo;
   Node goal;
+
+  Caperucita cap;
+  Lobo wolf;
 
   sf::Clock loboClock;
   float loboSpeed = 0.15f;
