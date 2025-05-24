@@ -30,7 +30,7 @@ public:
   void showTerrain();
 
   int getWidth() const;
-  int gertHeight() const;
+  int getHeight() const;
 
   TypeTerrain getTerrainAt(int x, int y) const;
   int getCost(TypeTerrain tt);

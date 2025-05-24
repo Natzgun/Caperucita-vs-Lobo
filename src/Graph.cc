@@ -4,10 +4,10 @@
 
 Graph::Graph(Terrain &t) : terrain(t) {
   width = terrain.getWidth();
-  width = terrain.gertHeight();
+  height = terrain.getHeight();
 }
 
-vector<Node> Graph::getNeighbors(const Node &node) {
+vector<Node> Graph::getNeighbors(Node node) {
   vector<Node> neighbors;
   vector<pair<int, int>> directions = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
 

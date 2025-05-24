@@ -303,7 +303,7 @@ void Terrain::showTerrain() {
 
 int Terrain::getWidth() const { return width; }
 
-int Terrain::gertHeight() const { return height; }
+int Terrain::getHeight() const { return height; }
 
 TypeTerrain Terrain::getTerrainAt(int x, int y) const {
   if (x >= 0 && x < width && y >= 0 && y < height) {

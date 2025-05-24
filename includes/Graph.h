@@ -11,7 +11,7 @@ private:
 
 public:
   Graph(Terrain &t);
-  vector<Node> getNeighbors(const Node &node);
+  vector<Node> getNeighbors(Node node);
 };
 
 #endif // GRAPH_H
