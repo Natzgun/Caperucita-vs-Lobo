@@ -23,6 +23,7 @@ set(SOURCES
   src/Caperucita.cc
   src/Lobo.cc
   src/Terrain.cc
+  src/Game.cc
 )
 
 add_executable(sfml-game src/main.cc ${SOURCES} ${HEADERS})
